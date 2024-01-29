@@ -12,10 +12,16 @@ function App() {
 
   useEffect (() => {
     const fetchEmployeeData = async () => {
+      try{
       setLoading(true);
       const res = await axios.get('https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json');
       setEmployeeData(res.data);
       setLoading(false);
+      }
+      catch(error)
+      {
+        alert('failed to fetch data');
+      }
     } 
 
     fetchEmployeeData();
